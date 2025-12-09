@@ -1,0 +1,27 @@
+[config.wallpaper]
+command = "swaybg"
+arguments = ["--output", "eDP-1", "--mode", "fill", "--image"]
+set = true
+
+[templates.gtk3]
+input_path = './templates/gtk_colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+
+[templates.gtk4]
+input_path = './templates/gtk_colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = """
+dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-{{ mode | lower_case }}\"'
+"""
+
+[templates.waybar]
+input_path = './templates/gtk_colors.css'
+output_path = '~/.config/waybar/colors.css'
+
+[templates.alacritty]
+input_path = './templates/alacritty.toml'
+output_path = '~/.config/alacritty/colors.toml'
+
+[templates.sway]
+input_path = './templates/sway_colors.conf'
+output_path = '~/.config/sway/colors.conf'

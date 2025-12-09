@@ -1,0 +1,215 @@
+@import "colors.HDMI.css";
+
+* {
+	font-family: "Outfit", "Maple Mono", "0xProto";
+	transition: all 0.15s;
+}
+
+window#waybar {
+	background-color: transparent;
+	font-size: 1.1em;
+}
+
+window#waybar > box {
+	background-color: @surface;
+	transition-property: background_color;
+	transition-duration: .2s;
+	border-radius: 16px; 
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+window#waybar.empty #window{
+	background-color: transparent;
+}
+
+#window {
+	padding-right: 16px;
+	padding-left: 12px;
+	font-size: 1.1em;
+}
+
+.module {
+	padding: 2px 7px 2px 7px;
+	color: @primary;
+	border-radius: 0 0 16px 16px;
+}
+
+.modules-right {
+	border-radius: 0 0 16px 16px;
+}
+
+#workspaces button {
+	margin: 7px 0 7px 0;
+	padding: 0;
+	min-width: 1.5em;
+	border-radius: 9px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background-color: transparent;
+	color: @primary;
+	transition: min-width 400ms ease-out, background 400ms ease-in;
+}
+
+#workspaces button:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.focused {
+	min-width: 2.5em;
+	background-color: @primary;
+	color: @on_primary;
+	font-weight: 800;
+}
+
+#workspaces button.urgent {
+	background-color: @on_error_container;
+	color: @error_container;
+}
+
+#tray {
+	background-color: @surface_container;
+	padding: 0 15px 0 15px
+}
+
+#clock {
+	min-width: 4em;
+	font-size: 1.2em;
+	font-weight: 900;
+	color: @on_primary;
+	background-color: @primary;
+}
+
+#battery {
+	color: @on_primary;
+	background-color: @primary;
+	min-width: 4rem;
+}
+
+#battery.charging, #battery.plugged {
+	color: @on_tertiary;
+	background-color: @tertiary;
+}
+
+@keyframes blink {
+	to {
+		background-color: @error;
+		color: @on_error;
+	}
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+	background-color: @on_error;
+	color: @error;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#pulseaudio {
+	min-width: 3em;
+}
+
+#pulseaudio.muted {
+	color: @inverse_primary;
+}
+
+#backlight {
+	min-width: 3em;
+}
+
+#pulseaudio-slider {
+	min-width: 150px;
+	background-image: none;
+}
+
+#backlight-slider {
+	min-width: 150px;
+}
+
+#audio, #brightness {
+	transition: 200ms background-color ease-in-out;
+	border-radius: 0 0 16px 16px;
+}
+
+#audio:hover, #brightness:hover {
+	background-color: @surface_container;
+}
+
+slider {
+	min-height: 4px;
+	min-width: 4px;
+	opacity: 0;
+	margin: 0;
+	box-shadow: none;
+	border: 3px solid @primary;
+	padding: 3px;
+	background-image: none;
+	background-color: @secondary_container;
+}
+
+trough {
+	min-height: 16px;
+	border-radius: 16px;
+	margin: 0;
+	background-color: @secondary_container;
+	background-image: none;
+	margin-left: 5px;
+}
+
+highlight {
+	background-color: @primary;
+	min-width: 0;
+	margin: 0;
+	border-radius: 16px 0 0 16px;
+	background-image: none;
+}
+
+#idle_inhibitor {
+	min-width: 2rem;
+}
+
+#idle_inhibitor.activated {
+	background-color: @primary;
+	color: @on_primary;
+}
+
+#language {
+	min-width: 2rem;
+}
+
+#custom-power {
+	font-size: 1.5rem;
+	min-width: 1.0em;
+	color: @primary;
+	border-radius: 0 16px 16px 16px;
+	padding-right: 16px;
+}
+
+#custom-power:hover {
+	background-color: @primary;
+	color: @on_primary;
+}
+
+#taskbar {
+	background-color: @surface_container;
+	border-radius: 16px 0 0 16px;
+}
+
+#taskbar button {
+	border-radius: 16px;
+}
+
+#mode {
+	background-color: @primary;
+	color: @on_primary;
+	border-radius: 16px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px;
+}

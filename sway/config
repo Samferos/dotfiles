@@ -1,0 +1,307 @@
+## Sway Config
+
+## Variables
+include ./variables.conf
+
+exec swayidle -w \
+	timeout 300 'brillo -O; brillo -u 800000 -S 1' \
+	resume 'brillo -I -u 800000' \
+    timeout 320 'swaymsg "output * power off"' \
+	resume 'swaymsg "output * power on"' \
+    timeout 330 'swaylock -f' \
+    before-sleep 'swaylock -f'
+
+exec batsignal
+
+seat seat0 xcursor_theme capitaine-cursors 32
+
+output eDP-1 {
+	background ~/Pictures/Backgrounds/ichika_falling.png fill #101418
+	scale 1.0
+}
+
+output HDMI-A-1 {
+	background ~/Pictures/Backgrounds/ichika_stairs.png fill #101418
+}
+
+output * {
+	allow_tearing yes
+	max_render_time off
+}
+
+input type:touchpad {
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+	drag_lock disabled
+}
+
+input type:keyboard {
+	xkb_layout "fr(azerty)"
+	xkb_options "compose:rctrl"
+	repeat_delay 200
+}
+
+input type:pointer {
+	accel_profile flat
+} 
+
+gaps inner 8
+
+## Swayfx Settings
+
+corner_radius 16
+
+layer_effects "wofi" {
+	corner_radius 16 
+}
+
+# default_border pixel 3
+default_border none
+default_dim_inactive 0
+
+include ./colors.conf
+
+focus_wrapping no
+
+for_window {
+  [shell="xwayland"] title_format "%title [XWayland]"
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
+  [tiling] dim_inactive 0.1
+}
+
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+q exec $term
+
+    # Kill focused window
+    bindsym $mod+c kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    bindsym $mod+e exec $file_manager
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning \
+	-m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+	-B 'Yes, exit sway' 'swaymsg exit'
+
+	# bindsym $mod+p sticky toggle; exec notify-send "Window pin toggled." \
+	# "Toggled pinning for the focused window."
+
+	bindsym $mod+p exec ~/.config/scripts/sway/toggle_window_pin.sh
+
+	bindsym $mod+i inhibit_idle visible; exec notify-send "Idle Inhibiting ON" \
+	"Enabled idle inhibiting for the focused window."
+
+	bindsym $mod+Shift+i inhibit_idle none; exec notify-send "Idle Inhibiting OFF" \
+	"Disabled idle inhibiting for the focused window."
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+	bindsym $mod+y workspace prev
+	bindsym $mod+u workspace next
+#
+# Workspaces:
+#
+    bindsym $mod+ampersand workspace number 1
+    bindsym $mod+eacute workspace number 2
+    bindsym $mod+quotedbl workspace number 3
+    bindsym $mod+apostrophe workspace number 4
+    bindsym $mod+parenleft workspace number 5
+    bindsym $mod+minus workspace number 6
+    bindsym $mod+egrave workspace number 7
+    bindsym $mod+underscore workspace number 8
+    bindsym $mod+ccedilla workspace number 9
+    bindsym $mod+agrave workspace number 10
+
+    # Move focused container to workspace
+    bindsym $mod+Shift+ampersand move container to workspace number 1
+    bindsym $mod+Shift+eacute move container to workspace number 2
+    bindsym $mod+Shift+quotedbl move container to workspace number 3
+    bindsym $mod+Shift+apostrophe move container to workspace number 4
+    bindsym $mod+Shift+parenleft move container to workspace number 5
+    bindsym $mod+Shift+minus move container to workspace number 6
+    bindsym $mod+Shift+egrave move container to workspace number 7
+    bindsym $mod+Shift+underscore move container to workspace number 8
+    bindsym $mod+Shift+ccedilla move container to workspace number 9
+    bindsym $mod+Shift+agrave move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+    bindsym $mod+button4 workspace next
+    bindsym $mod+button5 workspace prev
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+    bindsym $mod+shift+z split none
+
+    # Switch the current container between different layout styles
+    bindsym $mod+w layout toggle split tabbed stacking
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+
+    bindsym $mod+z focus child
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+shift+s move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+s scratchpad show
+
+set $resize_mode Resize
+
+mode "$resize_mode" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    bindsym $left+shift resize shrink width 40px
+    bindsym $down+shift resize grow height 40px
+    bindsym $up+shift resize shrink height 40px
+    bindsym $right+shift resize grow width 40px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "$resize_mode"
+
+set $logout_mode <u><b>O</b></u> Logout | <u><b>L</b></u> Lock screen | <u><b>K</b></u> Shutdown | <u><b>I</b></u> Reboot
+
+mode --pango_markup "$logout_mode" {
+	bindsym o exec loginctl terminate-user "" ; mode "default"
+	bindsym l exec $screen_locker ; mode "default"
+	bindsym k exec systemctl poweroff
+	bindsym i exec systemctl reboot
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "$logout_mode"
+
+#
+# Utilities:
+#
+bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%-
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%+
+bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_SOURCE@ toggle
+
+bindsym --locked XF86MonBrightnessDown exec brillo -U 5
+bindsym --locked XF86MonBrightnessUp exec brillo -A 5
+
+bindsym --locked --no-repeat XF86TouchpadToggle exec ~/.config/scripts/sway/toggle_touchpad.sh
+
+# bindsym --locked --no-repeat XF86TouchpadToggle \
+# 		input type:touchpad events toggle enabled disabled; \
+# 		exec notify-send "Touchpad toggled."
+
+bindsym Print exec ~/.config/scripts/screenshot.sh
+bindsym shift+Print exec ~/.config/scripts/screenshot.sh screen
+
+bindsym alt+space exec ~/.config/scripts/nix-run.sh
+
+bindsym $mod+t exec ~/.config/scripts/sway/set_background.sh
+
+bindsym --no-repeat $mod+Shift+w bar mode toggle 
+
+bindsym --locked --no-repeat $mod+Shift+p output * power on
+bindsym --locked --no-repeat $mod+Ctrl+p output * power off
+
+bar {
+	id 0
+
+	position top
+
+	modifier $mod+Ctrl
+
+	swaybar_command waybar
+}
+
+bar {
+	id 1
+
+	position top
+
+	modifier $mod+Ctrl
+
+	swaybar_command waybar \
+		--config ~/.config/waybar/config.HDMI.jsonc \
+		--style ~/.config/waybar/style.HDMI.css
+}
+
+include /etc/sway/config.d/*

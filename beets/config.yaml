@@ -1,0 +1,22 @@
+directory: /home/samuel/Music/Collection
+embedart:
+  auto: no
+import:
+  set_fields:
+    embed_art_not_cleared: 'true'
+hook:
+  hooks:
+    - event: import
+      command: beet clearart -y embed_art_not_cleared:true
+    - event: import
+      command: beet modify -ay embed_art_not_cleared:true embed_art_not_cleared!
+library: /home/samuel/Music/Collection/.library.db
+move: yes
+permissions:
+  dir: 775
+  file: 775
+plugins: fetchart replaygain embedart thumbnails edit hook permissions
+replaygain:
+  albumgain: yes
+  auto: yes
+  backend: ffmpeg

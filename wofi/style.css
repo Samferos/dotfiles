@@ -1,0 +1,9 @@
+@import 'wofi/colors.css';
+
+.entry {
+	padding: 4px;
+}
+
+.drun-icon {
+	padding-right: 8px;
+}

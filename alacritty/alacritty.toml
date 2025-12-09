@@ -1,0 +1,14 @@
+[general]
+import = [ "colors.toml" ]
+
+[keyboard]
+bindings = [
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+  { key = "R", mods = "Control|Shift", action = "ResetFontSize" }
+]
+
+[window]
+padding = { x = 16, y = 16 }
+
+[font]
+size = 10.5

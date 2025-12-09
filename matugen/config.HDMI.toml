@@ -1,0 +1,8 @@
+[config.wallpaper]
+command = "swaybg"
+arguments = ["--output", "HDMI-A-1", "--mode", "fill", "--image"]
+set = true
+
+[templates.waybar]
+input_path = './templates/gtk_colors.css'
+output_path = '~/.config/waybar/colors.HDMI.css'

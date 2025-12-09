@@ -1,0 +1,150 @@
+// -*- mode: jsonc -*-
+{
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+		//"height": 124, // Waybar height (to be removed for auto height)
+		// "width": 1280, // Waybar width
+		"spacing": 5, // Gaps between modules (4px)
+		"output": "eDP-1",
+		"margin": "8 8 0 8",
+		"id": "0",
+		"ipc": true,
+		"modifier-reset": "release",
+		"reload_style_on_change": true,
+		// Choose the order of the modules
+		"modules-left": [
+			"sway/window",
+			"sway/mode"
+		],
+		"modules-center": [
+			"sway/workspaces",
+			"sway/scratchpad"
+		],
+		"modules-right": [
+			"tray",
+			"group/audio",
+			//"group/brightness",
+			"backlight",
+			"idle_inhibitor",
+			"keyboard-state",
+			//"sway/language",
+			"battery",
+			"clock",
+			"custom/power"
+		],
+		"sway/window": {
+			"icon": true,
+			"tooltip": false
+		},
+		"sway/scratchpad": {
+			"format": "{icon}  {count}",
+			"show-empty": false,
+			"format-icons": ["", " "],
+			"tooltip": true,
+			"tooltip-format": "{app}: {title}"
+		},
+		"sway/language": {
+			"on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+			"tooltip": false
+		},
+		"sway/workspaces": {
+			"warp-on-scroll": false
+		},
+		"idle_inhibitor": {
+			"format": "{icon}",
+			"format-icons": {
+				"activated": "󰈈 ",
+				"deactivated": "󰈉 "
+			},
+			"tooltip-format-activated": "Idle inhibiting active.",
+			"tooltip-format-deactivated": "Idle inhibiting inactive."
+		},
+		"tray": {
+				// "icon-size": 21,
+				"spacing": 10
+		},
+		"clock": {
+				// "timezone": "Europe/Paris",
+				"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+				"calendar": {
+					"mode"          : "month",
+					"mode-mon-col"  : 3,
+					"weeks-pos"     : "right",
+					"on-scroll"     : 1,
+					"format": {
+						"months":     "<span color='#ffead3'><b>{}</b></span>",
+						"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+						"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+						"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+						"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+					}
+				},
+				"actions":  {
+					"on-click-right": "mode",
+					"on-scroll-up": "shift_up",
+					"on-scroll-down": "shift_down"
+				}
+		},
+		"group/brightness": {
+			"orientation": "inherit",
+			"drawer": {
+				"transition-duration": 500,
+				"transition-left-to-right": false
+			},
+			"modules": [
+				"backlight",
+				"backlight/slider"
+			]
+		},
+		"backlight": {
+			"tooltip": false,
+			"format": "󰖙  {percent}"
+		},
+		"backlight/slider": {
+			"min": 1,
+			"max": 100,
+			"orientation": "inherit"
+		},
+		"battery": {
+			"interval": 10,
+			"states": {
+						// "good": 95,
+						"warning": 30,
+						"critical": 15
+			},
+			"format": "{capacity} {icon}",
+			"format-full": "{capacity} {icon}",
+			"format-charging": "{capacity} {icon}󱐋",
+			"format-plugged": "{capacity} ",
+				// "format-good": "", // An empty format will hide the module
+				// "format-full": "",
+				"format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+		},
+		"pulseaudio/slider": {
+			"min": 0,
+			"max": 100,
+			"orientation": "inherit"
+		},
+		"pulseaudio": {
+			"format": "  {volume}",
+			"format-muted": "  {volume}",
+			"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+			"on-click-right": "pwvucontrol"
+		},
+		"group/audio": {
+			"orientation": "inherit",
+			"drawer": {
+				"transition-duration": 500,
+				"transition-left-to-right": false
+			},
+			"modules": [
+				"pulseaudio",
+				"pulseaudio/slider"
+			]
+		},
+		"custom/power": {
+			"format" : "",
+			"on-click": "swaymsg 'mode \"$logout_mode\"'",
+			"tooltip": false
+		}
+}
