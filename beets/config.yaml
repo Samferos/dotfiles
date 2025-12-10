@@ -15,8 +15,10 @@ move: yes
 permissions:
   dir: 775
   file: 775
-plugins: fetchart replaygain embedart thumbnails edit hook permissions
+plugins: musicbrainz fetchart replaygain embedart thumbnails edit hook permissions
 replaygain:
   albumgain: yes
   auto: yes
   backend: ffmpeg
+paths:
+  default: $albumartist/$album%aunique{}/%if{$disc,Disc $disc - }$track $title
