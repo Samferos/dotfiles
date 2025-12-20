@@ -1,6 +1,6 @@
 #!/bin/sh
 
-LAUNCH_ENTRY=$(wofi --show drun --define=drun-print_desktop_file=true | sed -E "s/(\.desktop) /\1:/")
+LAUNCH_ENTRY=$(rofi -show drun -run-command "uwsm app -- {cmd}")
 
 if [ ! -z $LAUNCH_ENTRY ]; then
     echo $LAUNCH_ENTRY
