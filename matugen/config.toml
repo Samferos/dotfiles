@@ -1,6 +1,18 @@
+[config]
+caching = true
+
+[config.custom_colors]
+black = "#20201d"
+red = "#d73737"
+green = "#60ac39"
+yellow = "#cfb017"
+blue = "#6684e1"
+magenta = "#b854d4"
+cyan = "#1fad83"
+white = "#a6a28c"
+
 [config.wallpaper]
-command = "swaybg"
-arguments = ["--output", "eDP-1", "--mode", "fill", "--image"]
+command = "swww img --transition-type grow {{ image }}"
 set = true
 
 [templates.gtk3]
@@ -25,3 +37,26 @@ output_path = '~/.config/alacritty/colors.toml'
 [templates.sway]
 input_path = './templates/sway_colors.conf'
 output_path = '~/.config/sway/colors.conf'
+
+[templates.rofi]
+input_path = './templates/rofi_colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.mako]
+input_path = './templates/mako_colors'
+output_path = '~/.config/mako/colors'
+post_hook = """
+makoctl reload
+"""
+
+[templates.discord_material]
+input_path = './templates/discord_material_theme.css'
+output_path = '~/.config/Vencord/themes/discord_material.theme.css'
+
+[templates.debug]
+input_path = './templates/color_debugging'
+output_path = './color_debugging_output'
+
+[templates.foot]
+input_path = './templates/foot_colors.ini'
+output_path = '~/.config/foot/colors.ini'

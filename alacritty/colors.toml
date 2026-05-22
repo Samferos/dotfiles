@@ -1,74 +1,67 @@
 [colors.primary]
-background = '#0d141b'
-foreground = '#dce3ee'
+background = '#101418'
+foreground = '#e0e2e8'
  
 [colors.cursor]
-text = '#404750'
-cursor = '#dce3ee' 
+text = '#42474e'
+cursor = '#e0e2e8' 
  
 [colors.vi_mode_cursor]
-text = '#0d141b'
-cursor = '#9acbff' 
+text = '#101418'
+cursor = '#9dcbfc' 
  
 [colors.search.matches]
-foreground = '#404750' 
-background = '#c2c1f9' 
+foreground = '#42474e' 
+background = '#d4bee6' 
  
 [colors.search.focused_match]
-foreground = '#404750' 
-background = '#9acbff' 
+foreground = '#42474e' 
+background = '#9dcbfc' 
  
 [colors.footer_bar]
-foreground = '#404750' 
-background = '#dce3ee' 
+foreground = '#42474e' 
+background = '#e0e2e8' 
  
 [colors.hints.start]
-foreground = '#404750' 
-background = '#bac6ea' 
+foreground = '#42474e' 
+background = '#bac8da' 
  
 [colors.hints.end]
-foreground = '#404750' 
-background = '#bac6ea' 
+foreground = '#42474e' 
+background = '#bac8da' 
  
 [colors.selection]
-text = '#0d141b'
-background = '#9acbff'
+text = '#003355'
+background = '#9dcbfc'
  
  
 [colors.normal]
-black = '#181818' 
-red = '#ffb4ab' 
-green = '#9acbff' 
-yellow = '#00629e' 
-blue = '#9acbff' 
-magenta = '#c2c1f9' 
-cyan = '#bac6ea' 
-white = '#BAC2DE' 
+black = '#101418'
+red = '#ffb2be' 
+green = '#99d4a2' 
+yellow = '#cacb77' 
+blue = '#a8c8ff' 
+magenta = '#d9bafa' 
+cyan = '#83d5c7' 
+white = '#bfce7f' 
  
  
 [colors.bright]
-black = '#585B70' 
-red = '#690005' 
-green = '#003355' 
-yellow = '#9acbff' 
-blue = '#003355' 
-magenta = '#2b2b59' 
-cyan = '#23304d' 
-# red = '#F38BA8' 
-# green = '#A6E3A1' 
-# yellow = '#F9E2AF' 
-# blue = '#89B4FA' 
-# magenta = '#F5C2E7' 
-# cyan = '#94E2D5' 
-white = '#A6ADC8' 
- 
- 
+black = '#1d2024'
+red = '#561d2a' 
+green = '#003918' 
+yellow = '#313300' 
+blue = '#07305f' 
+magenta = '#3d2459' 
+cyan = '#003731' 
+white = '#2b3400' 
+
 [colors.dim]
-black = '#45475A' 
-# red = '#F38BA8' 
-# green = '#A6E3A1' 
-# yellow = '#F9E2AF' 
-# blue = '#89B4FA' 
-# magenta = '#F5C2E7' 
-# cyan = '#94E2D5' 
-white = '#BAC2DE' 
+black = "#131415"
+red = "#864343"
+green = "#777c44"
+yellow = "#9e824c"
+blue = "#556a7d"
+magenta = "#75617b"
+cyan = "#5b7d78"
+white = "#828482"

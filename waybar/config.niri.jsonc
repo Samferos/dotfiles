@@ -25,7 +25,7 @@
 		"backlight",
 		"idle_inhibitor",
 		"keyboard-state",
-		//"niri/language",
+		"niri/language",
 		"battery",
 		"clock",
 		"custom/power"
@@ -44,8 +44,8 @@
 	"idle_inhibitor": {
 		"format": "{icon}",
 		"format-icons": {
-			"activated": "󰈈 ",
-			"deactivated": "󰈉 "
+			"activated": "",
+			"deactivated": ""
 		},
 		"tooltip-format-activated": "Idle inhibiting active.",
 		"tooltip-format-deactivated": "Idle inhibiting inactive."
@@ -89,7 +89,7 @@
 	},
 	"backlight": {
 		"tooltip": false,
-		"format": "󰖙  {percent}"
+		"format": "  {percent}"
 	},
 	"backlight/slider": {
 		"min": 1,
@@ -105,11 +105,11 @@
 		},
 		"format": "{capacity} {icon}",
 		"format-full": "{capacity} {icon}",
-		"format-charging": "{capacity} {icon}󱐋",
-		"format-plugged": "{capacity} ",
+		"format-charging": "{capacity} {icon}",
+		"format-plugged": "{capacity} ",
 			// "format-good": "", // An empty format will hide the module
 			// "format-full": "",
-			"format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+			"format-icons": ["","","","",""]
 	},
 	"pulseaudio/slider": {
 		"min": 0,
@@ -117,8 +117,8 @@
 		"orientation": "inherit"
 	},
 	"pulseaudio": {
-		"format": "  {volume}",
-		"format-muted": "  {volume}",
+		"format": "&#xf028;  {volume}",
+		"format-muted": "&#xf6a9;  {volume}",
 		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
 		"on-click-right": "pwvucontrol"
 	},
@@ -134,8 +134,8 @@
 		]
 	},
 	"custom/power": {
-		"format" : "",
-		"on-click": "nirimsg 'mode \"$logout_mode\"'",
+		"format" : "",
+		"on-click": "$TERM",
 		"tooltip": false
 	}
 }

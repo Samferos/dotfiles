@@ -1,55 +1,55 @@
 // -*- mode: jsonc -*-
 {
-	"layer": "top", // Waybar at top layer
-	"position": "top", // Waybar position (top|bottom|left|right)
-	// "height": 20, // Waybar height (to be removed for auto height)
-	// "width": 1280, // Waybar width
-	"spacing": 5, // Gaps between modules (4px)
-	"output": "HDMI-A-1",
-	"margin": "2 2 0 2",
-	"id": "1",
-	"ipc": true,
-	"modifier-reset": "release",
-	"reload_style_on_change": true,
-	// Choose the order of the modules
-	"modules-left": [ ],
-	"modules-center": [
-		"sway/workspaces",
-		"sway/scratchpad"
-	],
-	"modules-right": [
-		"clock"
-	],
-	"sway/scratchpad": {
-		"format": "{icon}  {count}",
-		"show-empty": false,
-		"format-icons": ["", " "],
-		"tooltip": true,
-		"tooltip-format": "{app}: {title}"
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // "height": 20, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+    "output": "HDMI-A-1",
+    "margin": "8 8 0 8",
+    "id": 1,
+    "ipc": true,
+    "modifier-reset": "release",
+    "reload_style_on_change": true,
+    // Choose the order of the modules
+    "modules-left": [ ],
+    "modules-center": [
+	"sway/workspaces",
+	"sway/scratchpad"
+    ],
+    "modules-right": [
+	"clock"
+    ],
+    "sway/scratchpad": {
+	"format": "{icon}  {count}",
+	"show-empty": false,
+	"format-icons": ["", " "],
+	"tooltip": true,
+	"tooltip-format": "{app}: {title}"
+    },
+    "sway/workspaces": {
+	"warp-on-scroll": false
+    },
+    "clock": {
+	// "timezone": "Europe/Paris",
+	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"calendar": {
+	    "mode"          : "month",
+	    "mode-mon-col"  : 3,
+	    "weeks-pos"     : "right",
+	    "on-scroll"     : 1,
+	    "format": {
+		"months":     "<span color='#ffead3'><b>{}</b></span>",
+		"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+		"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+		"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+		"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+	    }
 	},
-	"sway/workspaces": {
-		"warp-on-scroll": false
-	},
-	"clock": {
-		// "timezone": "Europe/Paris",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"calendar": {
-			"mode"          : "month",
-			"mode-mon-col"  : 3,
-			"weeks-pos"     : "right",
-			"on-scroll"     : 1,
-			"format": {
-				"months":     "<span color='#ffead3'><b>{}</b></span>",
-				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
-				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-			}
-		},
-		"actions":  {
-			"on-click-right": "mode",
-			"on-scroll-up": "shift_up",
-			"on-scroll-down": "shift_down"
-		}
+	"actions":  {
+	    "on-click-right": "mode",
+	    "on-scroll-up": "shift_up",
+	    "on-scroll-down": "shift_down"
 	}
+    }
 }

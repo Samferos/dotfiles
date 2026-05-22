@@ -1,0 +1,7 @@
+<* for name, value in colors *>
+    {{name | replace: "_", "-" }} :
+    	   hsl : {{value.default.hsl}}
+    	   hue : {{value.default.hue}}
+	   saturation : {{value.default.saturation}}
+	   lightness : {{value.default.lightness}}
+<* endfor *>

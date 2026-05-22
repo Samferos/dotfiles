@@ -31,44 +31,37 @@ foreground = '{{colors.surface_variant.default.hex}}'
 background = '{{colors.secondary.default.hex}}' 
  
 [colors.selection]
-text = '{{colors.background.default.hex}}'
+text = '{{colors.on_primary.default.hex}}'
 background = '{{colors.primary.default.hex}}'
  
  
 [colors.normal]
-black = '#181818' 
-red = '{{colors.error.default.hex}}' 
-green = '{{colors.primary.default.hex}}' 
-yellow = '{{colors.inverse_primary.default.hex}}' 
-blue = '{{colors.primary.default.hex}}' 
-magenta = '{{colors.tertiary.default.hex}}' 
-cyan = '{{colors.secondary.default.hex}}' 
-white = '#BAC2DE' 
+black = '{{colors.background.default.hex}}'
+red = '{{colors.red.default.hex}}' 
+green = '{{colors.green.default.hex}}' 
+yellow = '{{colors.yellow.default.hex}}' 
+blue = '{{colors.blue.default.hex}}' 
+magenta = '{{colors.magenta.default.hex}}' 
+cyan = '{{colors.cyan.default.hex}}' 
+white = '{{colors.white.default.hex}}' 
  
  
 [colors.bright]
-black = '#585B70' 
-red = '{{colors.on_error.default.hex}}' 
-green = '{{colors.on_primary.default.hex}}' 
-yellow = '{{colors.primary.default.hex}}' 
-blue = '{{colors.on_primary.default.hex}}' 
-magenta = '{{colors.on_tertiary.default.hex}}' 
-cyan = '{{colors.on_secondary.default.hex}}' 
-# red = '#F38BA8' 
-# green = '#A6E3A1' 
-# yellow = '#F9E2AF' 
-# blue = '#89B4FA' 
-# magenta = '#F5C2E7' 
-# cyan = '#94E2D5' 
-white = '#A6ADC8' 
- 
- 
+black = '{{colors.surface_container.default.hex}}'
+red = '{{colors.on_red.default.hex}}' 
+green = '{{colors.on_green.default.hex}}' 
+yellow = '{{colors.on_yellow.default.hex}}' 
+blue = '{{colors.on_blue.default.hex}}' 
+magenta = '{{colors.on_magenta.default.hex}}' 
+cyan = '{{colors.on_cyan.default.hex}}' 
+white = '{{colors.on_white.default.hex}}' 
+
 [colors.dim]
-black = '#45475A' 
-# red = '#F38BA8' 
-# green = '#A6E3A1' 
-# yellow = '#F9E2AF' 
-# blue = '#89B4FA' 
-# magenta = '#F5C2E7' 
-# cyan = '#94E2D5' 
-white = '#BAC2DE' 
+black = "#131415"
+red = "#864343"
+green = "#777c44"
+yellow = "#9e824c"
+blue = "#556a7d"
+magenta = "#75617b"
+cyan = "#5b7d78"
+white = "#828482"
