@@ -1,8 +1,8 @@
 # vim: filetype=swayconfig
 
 include ./variables
-include ./colors
 include ./bindings
+include ./colors.matugen
 
 exec swayidle -w \
     timeout 300 'brillo -O; brillo -u 800000 -S 1' \

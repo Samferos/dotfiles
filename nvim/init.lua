@@ -16,7 +16,7 @@ require('mini.completion').setup()
 require('mini.icons').setup({ style = 'ascii' })
 require('mini.statusline').setup({ icons = false })
 
-local err, background, foreground = pcall(require, 'colors')
+local err, background, foreground = pcall(require, 'matugen')
 require('mini.hues').setup({
     background = err and background or '#111318',
     foreground = err and foreground or '#e1e2e9'

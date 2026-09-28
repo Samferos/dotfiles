@@ -1,5 +1,5 @@
 [general]
-import = [ "colors.toml" ]
+import = [ "colors.matugen.toml" ]
 
 [keyboard]
 bindings = [

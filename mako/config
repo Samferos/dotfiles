@@ -1,4 +1,4 @@
-include=~/.config/mako/colors
+include=~/.config/mako/colors.matugen
 
 output=eDP-1
 layer=top

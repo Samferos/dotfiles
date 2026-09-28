@@ -143,6 +143,11 @@ mode Move {
 }
 bindsym alt+f7 mode Move
 
+bindsym $mod+Shift+$left move left 48px
+bindsym $mod+Shift+$down move down 48px
+bindsym $mod+Shift+$up move up 48px
+bindsym $mod+Shift+$right move right 48px
+
 bindsym --no-repeat $mod+l exec $screen_locker
 
 #
