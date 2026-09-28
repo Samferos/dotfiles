@@ -18,4 +18,4 @@
 !/wofi
 
 # Ignore matugen generated files
-/**.matugen*
+*.matugen*
