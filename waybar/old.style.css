@@ -11,13 +11,13 @@ window#waybar {
 }
 
 window#waybar > box {
-    /*
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
-    background-color: transparent;
-    */
     background-color: @surface;
-    color: @primary;
-    min-height: 42px;
+    transition-property: background_color;
+    transition-duration: .2s;
+}
+
+window#waybar.niri > box {
+    border-radius: 16px;
 }
 
 window#waybar.hidden {
@@ -31,26 +31,23 @@ window#waybar.empty #window{
 #window {
     padding-right: 16px;
     padding-left: 12px;
-    color: @primary;
 }
 
 .module {
     padding: 2px 7px 2px 7px;
-    border-radius: 0 0 8px 8px;
+    color: @primary;
+    border-radius: 0 0 16px 16px;
 }
 
-#workspaces {
-    background-color: @surface;
-    border-radius: 8px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+.modules-right {
+    border-radius: 0 0 16px 16px;
 }
 
 #workspaces button {
     font-family: "Roboto-Flex";
     font-weight: 500;
+    margin: 7px 0 7px 0;
     padding: 0;
-    margin: 4px;
     min-width: 1.5em;
     border-radius: 9px;
     margin-left: 2px;
@@ -198,6 +195,7 @@ highlight {
     font-size: 1.5rem;
     min-width: 1.0em;
     color: @primary;
+    border-radius: 0 16px 16px 16px;
     padding-right: 16px;
 }
 

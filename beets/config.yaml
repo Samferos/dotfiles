@@ -19,6 +19,6 @@ plugins: musicbrainz fetchart replaygain embedart thumbnails edit hook permissio
 replaygain:
   albumgain: yes
   auto: yes
-  backend: ffmpeg
+  backend: gstreamer
 paths:
   default: $albumartist/$album%aunique{}/%if{$disc,Disc $disc - }$track $title

@@ -1,0 +1,184 @@
+# vim: filetype=swayconfig
+
+## Applications
+bindsym --no-repeat $mod+return exec $term
+bindsym $mod+d exec $app_launcher
+bindsym $mod+e exec $file_manager
+bindsym $mod+tab exec $window_switcher
+
+bindsym $mod+c kill
+
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+e exec swaynag -t warning \
+-e bottom \
+-m 'Session Actions' \
+-B 'Logout' 'loginctl terminate-user ""' \
+-B 'Shutdown' 'systemctl poweroff'
+
+# Window Pinning / Sticky
+bindsym --no-repeat $mod+p exec ~/.config/scripts/sway/toggle_window_pin.sh
+
+bindsym $mod+i inhibit_idle visible; exec notify-send "Idle Inhibiting ON" \
+"Enabled idle inhibiting for the focused window."
+
+bindsym $mod+Shift+i inhibit_idle none; exec notify-send "Idle Inhibiting OFF" \
+"Disabled idle inhibiting for the focused window."
+
+# Focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym alt+tab focus next sibling
+bindsym alt+shift+tab focus prev sibling
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
+# Workspaces
+bindsym $mod+ampersand workspace number 1
+bindsym $mod+eacute workspace number 2
+bindsym $mod+quotedbl workspace number 3
+bindsym $mod+apostrophe workspace number 4
+bindsym $mod+parenleft workspace number 5
+bindsym $mod+minus workspace number 6
+bindsym $mod+egrave workspace number 7
+bindsym $mod+underscore workspace number 8
+bindsym $mod+ccedilla workspace number 9
+bindsym $mod+agrave workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace number 1
+bindsym $mod+Shift+eacute move container to workspace number 2
+bindsym $mod+Shift+quotedbl move container to workspace number 3
+bindsym $mod+Shift+apostrophe move container to workspace number 4
+bindsym $mod+Shift+parenleft move container to workspace number 5
+bindsym $mod+Shift+minus move container to workspace number 6
+bindsym $mod+Shift+egrave move container to workspace number 7
+bindsym $mod+Shift+underscore move container to workspace number 8
+bindsym $mod+Shift+ccedilla move container to workspace number 9
+bindsym $mod+Shift+agrave move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+0 move container to workspace number 10
+
+bindsym $mod+button4 workspace next
+bindsym $mod+button5 workspace prev
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+shift+z split none
+
+# Switch the current container between different layout styles
+bindsym $mod+w layout toggle split tabbed stacking
+
+# Make the current focus fullscreen
+bindsym --no-repeat $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+bindsym $mod+z focus child
+
+bindsym $mod+shift+s move scratchpad
+bindsym $mod+s scratchpad show
+
+mode Resize {
+    bindsym $left resize shrink width 8px
+    bindsym $down resize grow height 8px
+    bindsym $up resize shrink height 8px
+    bindsym $right resize grow width 8px
+    bindsym $left+shift resize shrink width 48px
+    bindsym $down+shift resize grow height 48px
+    bindsym $up+shift resize shrink height 48px
+    bindsym $right+shift resize grow width 48px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym alt+f8 mode Resize
+
+mode Move {
+    bindsym $left move left
+    bindsym $down move down
+    bindsym $up move up
+    bindsym $right move right
+    bindsym Shift+$left move left 48px
+    bindsym Shift+$down move down 48px
+    bindsym Shift+$up move up 48px
+    bindsym Shift+$right move right 48px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym alt+f7 mode Move
+
+bindsym --no-repeat $mod+l exec $screen_locker
+
+#
+# Utilities:
+#
+bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%-
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%+
+bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_SOURCE@ toggle
+
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioNext exec playerctl next
+
+bindsym --locked XF86MonBrightnessDown exec brillo -U 5
+bindsym --locked XF86MonBrightnessUp exec brillo -A 5
+
+bindsym --locked --no-repeat XF86TouchpadToggle exec ~/.config/scripts/sway/toggle_touchpad.sh
+
+# bindsym --locked --no-repeat XF86TouchpadToggle \
+#       input type:touchpad events toggle enabled disabled; \
+#       exec notify-send "Touchpad toggled."
+
+bindsym --no-repeat Print exec ~/.config/scripts/screenshot.sh
+bindsym --no-repeat shift+Print exec ~/.config/scripts/screenshot.sh screen
+bindsym --no-repeat alt+space exec ~/.config/scripts/nix-run.sh
+bindsym --no-repeat $mod+t exec ~/.config/scripts/set_background.sh
+bindsym --no-repeat $mod+y exec ~/.config/scripts/sway/swap_workspaces.sh
+bindsym --no-repeat $mod+m exec ~/.config/scripts/sway/mark.sh set
+bindsym --no-repeat $mod+shift+m exec ~/.config/scripts/sway/mark.sh remove
+bindsym --no-repeat $mod+g exec ~/.config/scripts/sway/mark.sh goto
+
+bindsym --no-repeat $mod+Shift+w bar mode toggle
+
+bindsym --locked --no-repeat $mod+Shift+p output * power on
+bindsym --locked --no-repeat $mod+Ctrl+p output * power off
+
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next

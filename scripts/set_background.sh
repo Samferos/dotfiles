@@ -15,4 +15,4 @@ fi
 
 ln -sf $BACKGROUNDS_FOLDER/$CHOICE $HOME/.background
 
-matugen image $BACKGROUNDS_FOLDER/$CHOICE
+matugen image --source-color-index=0 $BACKGROUNDS_FOLDER/$CHOICE

@@ -15,6 +15,7 @@
 /* Material You addon */
 @import url(https://capnkitten.github.io/BetterDiscord/Themes/Material-Discord/css/addons/material-you/source.css);
 
+
 /* MATERIAL YOU DARK THEME SETTINGS */
 .theme-dark {
 	--saturation-modifier: 0.3;
@@ -37,8 +38,8 @@
 
 	/* ACCENT HSL AND TEXT COLOR SETTINGS */
 	--accent-hue: {{  colors.primary.default.hue }};
-	--accent-saturation: {{ colors.primary.default.lightness }}%;
-	--accent-lightness: {{ colors.primary.default.saturation }}%;
+	--accent-saturation: {{ colors.primary.default.saturation }}%;
+	--accent-lightness: {{ colors.primary.default.lightness }}%;
 	--accent-text-color: {{ colors.on_primary.default.hsl }}; /* DOES NOTHING WITH MATERIAL YOU ENABLED */
 	--accent-button-action: {{ colors.on_primary.default.hsl }};
 

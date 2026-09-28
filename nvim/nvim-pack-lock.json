@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "direnv.nvim": {
+      "rev": "e623d3645152839cbe7e73e7b2aa6e31256020ea",
+      "src": "https://github.com/NotAShelf/direnv.nvim"
+    },
+    "mini.nvim": {
+      "rev": "a995fe9cd4193fb492b5df69175a351a74b3d36b",
+      "src": "https://github.com/nvim-mini/mini.nvim",
+      "version": "'stable'"
+    },
+    "nvim-lspconfig": {
+      "rev": "fef8b117ad5fb73943913f444f22065c4b834a60",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "vimtex": {
+      "rev": "fedb7ffc1bebf254cc74e7419c3a5930b6719065",
+      "src": "https://github.com/lervag/vimtex"
+    }
+  }
+}

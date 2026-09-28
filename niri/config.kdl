@@ -1,7 +1,7 @@
 input {
     keyboard {
         xkb {
-            layout "fr(oss),pt"
+            layout "fr(oss),fr_plus"
             options "grp:win_space_toggle"
         }
         numlock
@@ -16,6 +16,10 @@ input {
         accel-profile "flat"
         accel-speed -0.5
     }
+
+    tablet {
+        map-to-output "HDMI-A-1"
+    }
 }
 
 cursor {
@@ -27,34 +31,35 @@ cursor {
 }
 
 gestures {
-  hot-corners { off; }
+    hot-corners { off; }
 }
 
 output "eDP-1" {
     mode "1920x1080@60.008"
 
-    scale 1.25
+    scale 1
     transform "normal"
 }
 
 layout {
     gaps 8
 
+    background-color "transparent"
+
     center-focused-column "never"
     always-center-single-column
 
     preset-column-widths {
-        proportion 0.33333
         proportion 0.5
-        proportion 0.66667
+        proportion 1.0
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
 
     focus-ring {
         // off
-        width 2
-        active-color "#7fc8ff"
+        width 4
+        active-color "#FCDFA6"
         inactive-color "#505050"
     }
 
@@ -71,97 +76,107 @@ layout {
 }
 
 spawn-sh-at-startup "waybar --config ~/.config/waybar/config.niri.jsonc"
-spawn-at-startup "swww-daemon"
+spawn-at-startup "awww-daemon"
 //spawn-sh-at-startup "swaybg --image ~/Pictures/Backgrounds/ichika_falling.png"
 spawn-at-startup "swayidle" "-w" \
-  "timeout" "300" "brillo -O; brillo -u 800000 -S 1" \
-  "resume" "brillo -I -u 800000" \
-  "timeout" "320" "niri msg action power-off-monitors" \
-  "timeout" "330" "swaylock -f" \
-  "before-sleep" "swaylock -f"
+"timeout" "300" "brillo -O; brillo -u 800000 -S 1" \
+"resume" "brillo -I -u 800000" \
+"timeout" "320" "niri msg action power-off-monitors" \
+"timeout" "330" "swaylock -f" \
+"before-sleep" "swaylock -f"
 
 hotkey-overlay { skip-at-startup; }
 
-//prefer-no-csd
+prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot_%d-%m-%Y_%H-%M-%S.png"
 
 animations {
-  workspace-switch {
+    workspace-switch {
         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
 }
 
 window-rule {
-     // matches all windows
+    // matches all windows
     geometry-corner-radius 16
     clip-to-geometry true
 }
 
 window-rule {
-  match is-floating=true
+    match app-id="foot"
+    default-column-width { proportion 0.5; }
+}
 
-  shadow { on; }
-  focus-ring { active-color "#7fc8ff"; }
+window-rule {
+    match is-floating=true
+
+    shadow { on; }
 }
 
 layer-rule {
-  match namespace="notifications"
+    match namespace="notifications"
 
-  block-out-from "screencast"
+    block-out-from "screencast"
+}
+
+layer-rule {
+    match namespace="awww-daemon"
+    match namespace="wallpaper"
+    place-within-backdrop true
 }
 
 overview {
-  zoom 0.4
-  backdrop-color "#101418"
+    zoom 0.4
 
-  workspace-shadow {
-    softness 60
-    spread 20
-    color "#00000070"
-  }
+    workspace-shadow {
+        off
+        softness 60
+        spread 20
+        color "#00000070"
+    }
 }
 
 recent-windows {
-  highlight {
-    corner-radius 16
-    padding 16
-  }
+    highlight {
+        corner-radius 16
+        padding 16
+    }
 }
 
 binds {
-      Mod+Home { focus-column-first; }
-      Mod+End  { focus-column-last; }
-      Mod+Shift+Home { move-column-to-first; }
-      Mod+Shift+End  { move-column-to-last; }
-      
-      Mod+Ctrl+H { consume-or-expel-window-left; }
-      Mod+Ctrl+L { consume-or-expel-window-right; }
-      
-      Mod+U              { focus-workspace-down; }
-      Mod+Y              { focus-workspace-up; }
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Shift+Home { move-column-to-first; }
+    Mod+Shift+End  { move-column-to-last; }
 
-      Mod+A { switch-preset-column-width; }
-      Mod+Shift+A { switch-preset-column-width-back; }
+    Mod+Ctrl+Left { consume-or-expel-window-left; }
+    Mod+Ctrl+Right { consume-or-expel-window-right; }
 
-      Mod+Shift+R { switch-preset-window-height; }
-      Mod+Ctrl+R { reset-window-height; }
-      Mod+F { maximize-column; }
-      Mod+Shift+F { fullscreen-window; }
+    Mod+U              { focus-workspace-down; }
+    Mod+Y              { focus-workspace-up; }
 
-      Mod+G { expand-column-to-available-width; }
+    Mod+A { switch-preset-column-width; }
+    Mod+Shift+A { switch-preset-column-width-back; }
 
-      Mod+Ctrl+C { center-visible-columns; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
 
-      Mod+Alt+Left { set-column-width "-5%"; }
-      Mod+Alt+Right { set-column-width "+5%"; }
-      Mod+Alt+Shift+Left { set-column-width "-20%"; }
-      Mod+Alt+Shift+Right { set-column-width "+20%"; }
+    Mod+X { expand-column-to-available-width; }
 
-      Mod+Alt+Up { set-window-height "-5%"; }
-      Mod+Alt+Down { set-window-height "+5%"; }
-      Mod+Alt+Shift+Up { set-window-height "-20%"; }
-      Mod+Alt+Shift+Down { set-window-height "+20%"; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Alt+Left { set-column-width "-5%"; }
+    Mod+Alt+Right { set-column-width "+5%"; }
+    Mod+Alt+Shift+Left { set-column-width "-20%"; }
+    Mod+Alt+Shift+Right { set-column-width "+20%"; }
+
+    Mod+Alt+Up { set-window-height "-5%"; }
+    Mod+Alt+Down { set-window-height "+5%"; }
+    Mod+Alt+Shift+Up { set-window-height "-20%"; }
+    Mod+Alt+Shift+Down { set-window-height "+20%"; }
 
     Mod+Comma { show-hotkey-overlay; }
 
@@ -171,7 +186,7 @@ binds {
     spawn "rofi" "-show" "drun"; }
     Mod+E hotkey-overlay-title="Open File manager: nautilus" {
     spawn "nautilus"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {spawn "swaylock"; }
+    Super+L hotkey-overlay-title="Lock the Screen: swaylock" {spawn "swaylock"; }
 
     XF86AudioRaiseVolume allow-when-locked=true {
     spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
@@ -183,13 +198,13 @@ binds {
     spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay allow-when-locked=true {
-      spawn-sh "playerctl play-pause";
+        spawn-sh "playerctl play-pause";
     }
     XF86AudioPrev allow-when-locked=true {
-      spawn-sh "playerctl previous";
+        spawn-sh "playerctl previous";
     }
     XF86AudioNext allow-when-locked=true {
-      spawn-sh "playerctl next";
+        spawn-sh "playerctl next";
     }
 
     XF86MonBrightnessUp allow-when-locked=true {
@@ -211,18 +226,16 @@ binds {
     Mod+Shift+Up    { move-window-up; }
     Mod+Shift+Right { move-column-right; }
 
+    Mod+Z { center-column; }
+
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
 
     Mod+Shift+Page_Down { move-column-to-workspace-down; }
     Mod+Shift+Page_Up   { move-column-to-workspace-up; }
-    Mod+Shift+U         { move-column-to-workspace-down; }
-    Mod+Shift+Y         { move-column-to-workspace-up; }
 
-    Mod+Ctrl+Page_Down { move-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-workspace-up; }
-    Mod+Ctrl+U         { move-workspace-down; }
-    Mod+Ctrl+Y         { move-workspace-up; }
+    Mod+Alt+Page_Down { move-workspace-down; }
+    Mod+Alt+Page_Up   { move-workspace-up; }
 
     Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -277,6 +290,9 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
+    Mod+Alt+N { focus-monitor-next; }
+    Mod+Alt+C { move-column-to-monitor-next; }
+
     Mod+Shift+S { toggle-window-floating; }
     Mod+S { switch-focus-between-floating-and-tiling; }
 
@@ -294,4 +310,6 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Alt+Space { spawn "~/.config/scripts/nix-run.sh"; }
+
+    Mod+T { spawn "~/.config/scripts/set_background.sh"; }
 }

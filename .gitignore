@@ -1,0 +1,21 @@
+# Ignore everything, and only version those listed.
+/*
+!/.gitignore
+!/alacritty
+!/beets
+!/foot
+!/git
+!/gtk-3.0
+!/gtk-4.0
+!/mako
+!/matugen
+!/niri
+!/nvim
+!/scripts
+!/sway
+!/swaylock
+!/waybar
+!/wofi
+
+# Ignore matugen generated files
+/**.matugen*

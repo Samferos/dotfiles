@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[user]
+	email = samuelamaralantunes@gmail.com
+	name = Samuel AMARAL ANTUNES
+[pull]
+	rebase = true
+
+[includeIf "gitdir:~/Documents/school/**"]
+	path = "~/Documents/school/.gitconfig"

@@ -12,7 +12,7 @@ cyan = "#1fad83"
 white = "#a6a28c"
 
 [config.wallpaper]
-command = "swww img --transition-type grow {{ image }}"
+command = "awww img --transition-type grow {{ image }}"
 set = true
 
 [templates.gtk3]
@@ -38,9 +38,13 @@ output_path = '~/.config/alacritty/colors.toml'
 input_path = './templates/sway_colors.conf'
 output_path = '~/.config/sway/colors.conf'
 
+[templates.swaylock]
+input_path = './templates/swaylock'
+output_path = '~/.config/swaylock/config'
+
 [templates.rofi]
 input_path = './templates/rofi_colors.rasi'
-output_path = '~/.config/rofi/colors.rasi'
+output_path = '~/.config/rofi/colors.matugen.rasi'
 
 [templates.mako]
 input_path = './templates/mako_colors'
@@ -60,3 +64,7 @@ output_path = './color_debugging_output'
 [templates.foot]
 input_path = './templates/foot_colors.ini'
 output_path = '~/.config/foot/colors.ini'
+
+[templates.nvim]
+input_path = './templates/nvim_colors.lua'
+output_path = '~/.config/nvim/lua/colors.lua'
