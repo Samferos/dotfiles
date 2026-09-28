@@ -14,7 +14,7 @@ library: /home/samuel/Music/Collection/.library.db
 move: yes
 permissions:
   dir: 775
-  file: 775
+  file: 664
 plugins: musicbrainz fetchart replaygain embedart thumbnails edit hook permissions
 replaygain:
   albumgain: yes
