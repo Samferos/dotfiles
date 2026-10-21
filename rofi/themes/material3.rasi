@@ -1,0 +1,141 @@
+@import 'colors.matugen.rasi'
+
+* {
+    background-color: var(surface-container);
+    text-color: var(on-surface);
+}
+element {
+    padding: 4px;
+    cursor:  pointer;
+    spacing: 5px;
+    border:  0;
+    border-radius: 8;
+}
+element normal.normal, element normal.active, element alternate.normal, element alternate.active {
+    background-color: var(surface-container-high);
+    text-color:       var(on-surface);
+}
+element normal.urgent {
+    background-color: var(error);
+    text-color:       var(on-error);
+}
+element selected.normal, element selected.active {
+    background-color: var(primary);
+    text-color:       var(on-primary);
+}
+element selected.urgent {
+    background-color: var(error-container);
+    text-color:       var(on-error-container);
+}
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
+element-icon {
+    background-color: transparent;
+    size:             32px;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+window {
+    padding:          16;
+    background-color: var(surface-container);
+    border-radius:    16;
+    width:            512;
+    height:           912;
+}
+mainbox {
+    padding: 0;
+    border:  0;
+    background-color: inherit;
+}
+message {
+    padding:      1px ;
+    border-color: var(outline);
+    border:       2px dash 0px 0px ;
+}
+textbox {
+    text-color: var(on-surface-variant);
+}
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    true;
+    border-color: var(outline);
+    spacing:      2px ;
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    background-color: inherit;
+    scrollbar: false;
+}
+scrollbar {
+    width:        4px ;
+    padding:      0;
+    handle-width: 8px ;
+    border:       0;
+    handle-rounded-corners: true;
+    handle-color: var(on-surface);
+}
+sidebar {
+    border-color: var(outline);
+    border:       2px dash 0px 0px ;
+}
+button {
+    cursor:     pointer;
+    spacing:    0;
+    text-color: var(on-surface);
+}
+button selected {
+    background-color: var(primary);
+    text-color:       var(on-primary);
+}
+num-filtered-rows {
+    expand:     false;
+    text-color: Gray;
+}
+num-rows {
+    expand:     false;
+    text-color: Gray;
+}
+textbox-num-sep {
+    expand:     false;
+    str:        "/";
+    text-color: Gray;
+}
+inputbar {
+    padding:    1px ;
+    spacing:    0px ;
+    text-color: var(on-surface);
+    children:   [ "prompt","textbox-prompt-colon","entry","overlay","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+}
+overlay {
+    padding:          0px 0.2000em ;
+    background-color: var(on-surface);
+    foreground-color: var(surface);
+    margin:           0px 0.2000em ;
+    text-color:       var(surface);
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(on-surface);
+}
+entry {
+    text-color:        var(on-surface);
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: var(on-surface-variant);
+    placeholder:       "Type to filter";
+}
+prompt {
+    spacing:    0;
+    text-color: var(on-surface-variant);
+    background-color: inherit;
+}
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        ":";
+    text-color: inherit;
+}

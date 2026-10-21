@@ -1,0 +1,8 @@
+configuration {
+      modes: [ drun, window ];
+      combi-modes: [ window, drun, run ];
+      show-icons: true;
+      font: "sans 14";
+}
+
+@theme 'material3'
