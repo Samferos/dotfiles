@@ -22,8 +22,7 @@ bindsym $mod+Shift+e exec swaynag -t warning \
 # Window Pinning / Sticky
 bindsym --no-repeat $mod+p exec ~/.config/scripts/sway/toggle_window_pin.sh
 
-bindsym $mod+i inhibit_idle visible; exec notify-send "Idle Inhibiting ON" \
-"Enabled idle inhibiting for the focused window."
+bindsym $mod+i exec ~/.config/scripts/sway/toggle_idle_inhibit.sh
 
 bindsym $mod+Shift+i inhibit_idle none; exec notify-send "Idle Inhibiting OFF" \
 "Disabled idle inhibiting for the focused window."
@@ -127,6 +126,7 @@ mode Resize {
     bindsym Escape mode "default"
 }
 bindsym alt+f8 mode Resize
+bindsym $mod+r mode Resize
 
 mode Move {
     bindsym $left move left

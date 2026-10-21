@@ -1,34 +1,34 @@
 #!/bin/sh
 
-FOCUSED_WINDOW=$(swaymsg -rt get_tree | jq -r '.. | select(.focused?)')
+focused_window=$(swaymsg -rt get_tree | jq -r '.. | select(.focused?)')
 
-FOCUSED_WINDOW_ID=$(echo $FOCUSED_WINDOW | jq -r '.id')
-FOCUSED_WINDOW_NAME=$(echo $FOCUSED_WINDOW | jq -r '.app_id')
+focused_window_id=$(echo $focused_window | jq -r '.id')
+focused_window_name=$(echo $focused_window | jq -r '.app_id')
 
-ID_FILE=/tmp/.window_pin_$FOCUSED_WINDOW_ID
+id_file="/tmp/.window_pin_$focused_window_id"
 
-NOTIFICATION_ID=$(cat $ID_FILE)
+notification_id=$(cat $id_file)
 
-WINDOW_PINNED=$(echo $FOCUSED_WINDOW | jq -r '.sticky')
+window_pinned=$(echo $focused_window | jq -r '.sticky')
 
-if $WINDOW_PINNED; then
-	notify-send \
-		--category 'system' \
-		--urgency low \
-		--transient \
-		--print-id \
-		--replace-id ${NOTIFICATION_ID:-0} \
-		$FOCUSED_WINDOW_NAME \
-		'Window was unpinned' > $ID_FILE
-	swaymsg 'sticky disable'
+if $window_pinned; then
+    notify-send \
+        --category 'system' \
+        --urgency low \
+        --transient \
+        --print-id \
+        --replace-id ${notification_id:-0} \
+        $focused_window_name \
+        'window was unpinned' > $id_file
+    swaymsg 'sticky disable'
 else
-	notify-send \
-		--category 'system' \
-		--urgency low \
-		--transient \
-		--print-id \
-		--replace-id ${NOTIFICATION_ID:-0} \
-		$FOCUSED_WINDOW_NAME \
-		'Window was pinned' > $ID_FILE
-	swaymsg 'sticky enable'
+    notify-send \
+        --category 'system' \
+        --urgency low \
+        --transient \
+        --print-id \
+        --replace-id ${notification_id:-0} \
+        $focused_window_name \
+        'window was pinned' > $id_file
+    swaymsg 'sticky enable'
 fi

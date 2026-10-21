@@ -4,6 +4,8 @@ include ./variables
 include ./bindings
 include ./colors.matugen
 
+font pango:sans 11
+
 exec swayidle -w \
     timeout 300 'brillo -O; brillo -u 800000 -S 1' \
     resume 'brillo -I -u 800000' \
@@ -34,8 +36,7 @@ input type:touchpad {
 }
 
 input type:keyboard {
-    xkb_layout "fr,fr_plus,us"
-    xkb_options "grp:sclk_toggle"
+    xkb_layout "fr"
 }
 
 input type:pointer {
@@ -67,6 +68,13 @@ bar {
     modifier $mod+Ctrl
     swaybar_command waybar
 }
+
+# Visuals
+client.focused           $color_primary_container   $color_primary      $color_on_primary_fixed $color_primary
+client.unfocused         $color_surface_dim         $color_background   $color_on_secondary     $color_secondary_container
+client.focused_inactive  $color_secondary_fixed_dim $color_surface_container_highest    $color_secondary_fixed_dim
+client.placeholder       $color_shadow              $color_scrim                        $color_on_background
+client.urgent            $color_error               $color_error_container              $color_on_error
 
 include /etc/sway/config.d/*
 exec uwsm finalize
